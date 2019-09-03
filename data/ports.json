@@ -1,0 +1,11 @@
+{
+  "width": 44,
+  "height": 30,
+  "ports": [
+    { "id": 0, "name": "North Town", "x": 29, "y": 24 },
+    { "id": 1, "name": "East Town",  "x": 33, "y":  9 },
+    { "id": 2, "name": "South Town", "x": 10, "y":  1 },
+    { "id": 3, "name": "Bay Town",   "x":  3, "y": 19 },
+    { "id": 4, "name": "West Town",  "x": 13, "y": 21 }
+  ]
+}

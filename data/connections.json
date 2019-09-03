@@ -1,0 +1,17 @@
+[
+  { "from": 0, "to": 1, "distance":  8 },
+  { "from": 0, "to": 4, "distance":  8 },
+  { "from": 1, "to": 0, "distance":  8 },
+  { "from": 1, "to": 2, "distance": 11 },
+  { "from": 1, "to": 4, "distance": 11 },
+  { "from": 2, "to": 1, "distance": 11 },
+  { "from": 2, "to": 3, "distance":  8 },
+  { "from": 2, "to": 4, "distance": 10 },
+  { "from": 3, "to": 2, "distance":  8 },
+  { "from": 3, "to": 4, "distance": 10 },
+  { "from": 3, "to": 4, "distance": 10 },
+  { "from": 4, "to": 0, "distance":  8 },
+  { "from": 4, "to": 1, "distance": 11 },
+  { "from": 4, "to": 2, "distance": 10 },
+  { "from": 4, "to": 3, "distance": 10 }
+]
