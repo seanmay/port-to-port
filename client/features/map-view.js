@@ -2,7 +2,9 @@ import React from "react";
 import { SVGGraph, SVGPlot, SVGLineSeries, SVGPointSeries } from "react-graphesque";
 import { State } from "../state.context";
 
-export const MapView = () => {
+const noop = () => {};
+
+export const MapView = ({ onPortSelected = noop, onPathSelected = noop }) => {
   const state = React.useContext(State);
   const map = state.map;
 
@@ -24,7 +26,7 @@ export const MapView = () => {
     uniques.find(test => test.from === connection.to && test.to === connection.from)
       ? uniques
       : uniques.concat(connection);
-  
+
   const uniqueConnections = state.connections.reduce(removeDuplicateConnections, []);
   const normalizedConnections = uniqueConnections.map(line => [portMap[line.from], portMap[line.to]]);
 
@@ -42,12 +44,12 @@ export const MapView = () => {
   const rowGridLines = Array.from({ length: mapHeight - 1 }).map((_, i) => ({ x: 0, y: (i + 1)/mapHeight }));
 
   const MapPoint = ({ point, input }) =>
-    <g transform={`translate(${point.x},${point.y})`}>
+    <g transform={`translate(${point.x},${point.y})`} onClick={() => onPortSelected(input.id)}>
       <circle cx={0}
               cy={0}
               r={5}/>
       <text x={5} y={-10} fontSize="0.8rem">{input.name}</text>
-    </g>
+    </g>;
 
   const MapConnection = ({ line: [start, end] }) =>
     <line x1={start.point.x}
@@ -55,13 +57,15 @@ export const MapView = () => {
           x2={end.point.x}
           y2={end.point.y}
           stroke="grey"
-          strokeWidth="2" />;
+          strokeWidth="2"
+          onClick={() => onPathSelected({ from: start.input.id, to: end.input.id })} />;
 
   const ConnectionDistance = ({ point, input }) =>
     <g transform={`translate(${point.x},${point.y})`}>
       <circle cx="0" cy="0" r="3" fill="white" stroke="grey" strokeWidth="0.5" />
       <text y="0.5" fontSize="5" alignmentBaseline="middle" textAnchor="middle">{input.text}</text>
     </g>;
+
   return (
     <section style={{ border: "1px solid black", borderRadius: "1rem" }}>
       <SVGGraph>
