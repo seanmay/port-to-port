@@ -11,7 +11,7 @@ const connections = require("../data/connections.json");
 const events = require("../data/events.json");
 
 const App = () => {
-  const [state, dispatch] = React.useReducer((state, action) => state, { map, ports, connections, events });
+  const [state, dispatch] = React.useReducer((state) => state, { map, ports, connections, events });
   return (
     <Dispatch.Provider value={dispatch}>
       <State.Provider value={state}>
@@ -19,7 +19,7 @@ const App = () => {
             <nav></nav>
           </header>
           <main style={{display: "grid", gridTemplateColumns: "2fr 1fr" }}>
-            <MapView 
+            <MapView
               onPortSelected={console.log}
               onPathSelected={console.log} />
             <aside>
