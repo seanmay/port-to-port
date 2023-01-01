@@ -16,6 +16,6 @@
     "react-graphesque": "^0.1.0"
   },
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "parcel": "^2.8.2"
   }
 }
